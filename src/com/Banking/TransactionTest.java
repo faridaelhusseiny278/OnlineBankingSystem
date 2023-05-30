@@ -73,10 +73,35 @@ public class TransactionTest {
 
         Assert.assertEquals("Sender: Ahmed\nRecipient: Ali\nAmount: 100.0\ncom.Banking.Transaction Type: Credit\nTimestamp: " + formattedTimestamp, actualTransferDetails);
     }
+@Test
+    public void testDeposit() {
+        Account account = new Account(1000, "A125", "saving", "Ahmed");
+        Transaction1.deposit(amount, account);
+        double actualBalance = account.getBalance();
+        Assert.assertEquals(1100.0, actualBalance, 0.001);
+    }
+
+    @Test
+    public void TestWithdraw(){
+        Account account = new Account(1000, "A126", "saving", "omar");
+        Transaction1.withdraw(amount, account);
+        double actualBalance = account.getBalance();
+        Assert.assertEquals(900.0, actualBalance, 0.001);
+    }
+    @Test
+    public void TestTransfer(){
+        Account account1 = new Account(2000, "B126", "saving", "omar");
+        Account account2 = new Account(1000, "A123", "saving", "Aly");
+        Transaction1.transfer(amount, account1, account2);
+        double actualBalance = account1.getBalance();
+        double actualBalance2 = account2.getBalance();
+        Assert.assertEquals(1900.0, actualBalance, 0.001);
+        Assert.assertEquals(1100.0, actualBalance2, 0.001);
+    }
 
 
+    //TO DO:  TestTransferDetails and TestTransactionDetails according to the Transaction Type
 
-
-
+    
 
 }
