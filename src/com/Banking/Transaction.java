@@ -1,8 +1,8 @@
 package com.Banking;
-import java.util.Date;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import com.Banking.Account;
+import java.util.Date;
 public class Transaction {
 
     private String sender;
@@ -10,18 +10,18 @@ public class Transaction {
     private String transactionID;
     private Date date;
     private double amount;
-    private String description;
     private boolean isCancelled;
     private String transactionType;
 
     // Constructor
-    public Transaction(String transactionID, Date date, double amount, String description, String transactionType) {
+    public Transaction(String transactionID, Date date, double amount, String description, String transactionType, String sender, String recipient) {
         this.transactionID = transactionID;
         this.date = date;
         this.amount = amount;
-        this.description = description;
         this.isCancelled = false;
         this.transactionType = transactionType;
+        this.sender= sender;
+        this.recipient= recipient;
 
     }
 
@@ -38,17 +38,14 @@ public class Transaction {
         return amount;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     // Function to retrieve transaction details
-    public void getTransactionDetails() {
-        System.out.println("Transaction ID: " + transactionID);
-        System.out.println("Date: " + date);
-        System.out.println("Amount: " + amount);
-        System.out.println("Description: " + description);
-        System.out.println("Transaction Type: " + transactionType);
+    public String getTransactionDetails() {
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedTimestamp = currentTime.format(formatter);
+     return "Transaction ID: " + transactionID + "\nTimestamp: " + formattedTimestamp + "\nAmount: " + amount +
+             "\nTransaction Type: " + transactionType;
+
     }
     public String getTransferDetails() {
         LocalDateTime currentTime = LocalDateTime.now();
