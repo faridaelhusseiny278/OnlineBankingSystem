@@ -14,7 +14,7 @@ public class Transaction {
     private String transactionType;
 
     // Constructor
-    public Transaction(String transactionID, Date date, double amount, String description, String transactionType, String sender, String recipient) {
+    public Transaction(String transactionID, Date date, double amount, String transactionType, String sender, String recipient) {
         this.transactionID = transactionID;
         this.date = date;
         this.amount = amount;
