@@ -10,7 +10,7 @@ public class Transaction {
     private String transactionID;
     private Date date;
     private double amount;
-    private boolean isCancelled;
+
     private String transactionType;
 
     // Constructor
@@ -18,7 +18,6 @@ public class Transaction {
         this.transactionID = transactionID;
         this.date = date;
         this.amount = amount;
-        this.isCancelled = false;
         this.transactionType = transactionType;
         this.sender= sender;
         this.recipient= recipient;
@@ -56,33 +55,44 @@ public class Transaction {
                 "\ncom.Banking.Transaction Type: " + transactionType + "\nTimestamp: " + formattedTimestamp;
     }
 
-    public void deposit(double amount, Account account){
-        double currentBalance = account.getBalance();
-        double newBalance = currentBalance + amount;
-        account.setBalance(newBalance);
-        System.out.println(amount + " deposited successfully.");
-    }
-
-    public void withdraw(double amount, Account account) {
-        double currentBalance = account.getBalance();
-        if (amount <= currentBalance) {
-            double newBalance = currentBalance - amount;
+    public String deposit(double amount, Account account) {
+        if (amount > 0) {
+            double currentBalance = account.getBalance();
+            double newBalance = currentBalance + amount;
             account.setBalance(newBalance);
-            System.out.println(amount + " withdrawn successfully.");
-        } else {
-            System.out.println("Insufficient balance.");
+            return(amount + " deposited successfully.");
+        }
+        else {
+            return("Invalid amount.");
         }
     }
+//TO DO : make functions return strings instead of printing
+    public String withdraw(double amount, Account account) {
+        double currentBalance = account.getBalance();
+        if (amount <= 0)
+            return("Invalid amount.");
+        else if (amount <= currentBalance) {
+            double newBalance = currentBalance - amount;
+            account.setBalance(newBalance);
+            return(amount + " withdrawn successfully.");
+        }
+        else
+           return("Insufficient balance.");
+    }
+
     //Function to transfer money between accounts
-    public void transfer(double amount, Account sender, Account recipient) {
+    public String transfer(double amount, Account sender, Account recipient) {
         double SenderCurrentBalance = sender.getBalance();
-        if (amount <= SenderCurrentBalance) {
+        if (amount <=0){
+            return("Invalid amount.");
+        }
+        else if (amount <= SenderCurrentBalance) {
             double newBalance = SenderCurrentBalance - amount;
             sender.setBalance(newBalance);
             recipient.setBalance(recipient.getBalance() + amount);
-            System.out.println(amount + " transferred successfully.");
+            return(amount + " transferred successfully.");
         } else {
-            System.out.println("Insufficient balance.");
+            return("Insufficient balance.");
         }
     }
 
