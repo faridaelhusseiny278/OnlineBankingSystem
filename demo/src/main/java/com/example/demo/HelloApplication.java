@@ -27,7 +27,8 @@ public class HelloApplication extends Application {
         primaryStage.setWidth(750);
         primaryStage.setHeight(500);
         primaryStage.show();
-
+        Transaction.items.add(new Items("Pen", "IT1", 100, 10));
+        Transaction.items.add(new Items("Checkbook", "IT2", 1000, 15));
         }
         @FXML
        public void registerFunction() throws IOException {

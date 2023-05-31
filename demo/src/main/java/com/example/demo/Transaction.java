@@ -168,14 +168,19 @@ public class Transaction {
         }
         if (items.get(index).getCount() > 0) {
             Account account = Account.validation(sn);
-            if (account.getBalance() > itemPrice) {
-                account.setBalance(account.getBalance() - itemPrice);
-                System.out.println("item bought");
-                items.get(index).buy();
-                return "item bought";
-            } else {
-                System.out.println("Item not bought, not enough balance");
-                return "Item not bought, not enough balance";
+            if(account!=null) {
+                if (account.getBalance() > itemPrice) {
+                    account.setBalance(account.getBalance() - itemPrice);
+                    System.out.println("item bought");
+                    items.get(index).buy();
+                    return "item bought";
+                } else {
+                    System.out.println("Item not bought, not enough balance");
+                    return "Item not bought, not enough balance";
+                }
+            }
+            else {
+                return "Account doesn't exist";
             }
         } else {
             System.out.println("Item out of stock");

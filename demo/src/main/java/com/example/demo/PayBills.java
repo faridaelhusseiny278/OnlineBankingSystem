@@ -26,9 +26,15 @@ public class PayBills {
     public void payBills() throws IOException {
         if(accountSN.getText()!="" && billsID.getText()!="") {
             int id = Integer.parseInt(accountSN.getText());
-            String bills = billsID.getText().toString();
+            String bills = billsID.getText().toString().toUpperCase();
             Account account = Account.validation(id);
-            warning.setText(account.payBill(bills));
+
+            if (account!=null) {
+                warning.setText(account.payBill(bills));
+            }
+            else {
+                warning.setText("Account doesn't exist");
+            }
         }
         else {
             warning.setText("Please enter valid data");

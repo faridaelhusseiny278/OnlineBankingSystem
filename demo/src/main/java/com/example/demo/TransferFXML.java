@@ -37,16 +37,17 @@ public class TransferFXML {
             Random randomNum = new Random();
             int showMe = randomNum.nextInt(1000);
             String randomnumber = String.valueOf(showMe);
-            Transaction transaction = new Transaction(randomnumber, new Date(), amountTransfer, "transfer", accountSender.getName(), accountReciever.getName());
 
             if (Sendersn == Recieversn) {
                 warning.setText("Can't transfer to same account");
             } else {
                 if (accountSender != null && accountReciever != null) {
+                    Transaction transaction = new Transaction(randomnumber, new Date(), amountTransfer, "transfer", accountSender.getName(), accountReciever.getName());
+                    warning.setText(transaction.transfer(amountTransfer, accountSender, accountReciever));
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Transaction details");
                     alert.setHeaderText(null);
-                    alert.setContentText(transaction.transfer(amountTransfer, accountSender, accountReciever));
+                    alert.setContentText(transaction.getTransferDetails());
                     alert.showAndWait();
                 } else {
                     warning.setText("Account not available");

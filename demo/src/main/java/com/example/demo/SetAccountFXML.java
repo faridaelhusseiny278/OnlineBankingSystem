@@ -58,8 +58,7 @@ private Button returnButton,transactionsButton;
                 warning.setText("Account registered successfully.");
                 account.addBill("WATER BILL", 1000);
                 account.addBill("ELECTRICITY BILL", 500);
-                Transaction.items.add(new Items("Pen", "IT1", 100, 10));
-                Transaction.items.add(new Items("Checkbook", "IT2", 1000, 15));
+
             }
         }
         else {

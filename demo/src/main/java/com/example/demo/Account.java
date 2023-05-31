@@ -78,13 +78,18 @@ public class Account
         if(index!=-1){
             boolean status=bills.get(index).payBill();
             if(status) {
-                balance -= bills.get(index).amount;
-                System.out.println("Bill paid successfully");
+                balance -= bills.get(index).getAmount();
                 bills.remove(index);
-                return "Bill paid successfully";
+                return "Successful transaction";
+            }
+            else{
+                return "Not Enough Balance";
             }
         }
-        return "";
+        else{
+            return "Bill not found";
+        }
+
     }
 
     int findBill(String type){
