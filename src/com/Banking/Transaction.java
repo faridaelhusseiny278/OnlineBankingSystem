@@ -36,63 +36,53 @@ public class Transaction {
     public double getAmount() {
         return amount;
     }
-
+    LocalDateTime currentTime = LocalDateTime.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    String formattedTimestamp = currentTime.format(formatter);
     // Function to retrieve transaction details
-    public String getTransactionDetails() {
-        LocalDateTime currentTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedTimestamp = currentTime.format(formatter);
-     return "Transaction ID: " + transactionID + "\nTimestamp: " + formattedTimestamp + "\nAmount: " + amount +
-             "\nTransaction Type: " + transactionType;
-
-    }
-    public String getTransferDetails() {
-        LocalDateTime currentTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedTimestamp = currentTime.format(formatter);
-
-        return "Sender: " + sender + "\nRecipient: " + recipient + "\nAmount: " + amount +
-                "\ncom.Banking.Transaction Type: " + transactionType + "\nTimestamp: " + formattedTimestamp;
-    }
-
     public String deposit(double amount, Account account) {
         if (amount > 0) {
             double currentBalance = account.getBalance();
             double newBalance = currentBalance + amount;
             account.setBalance(newBalance);
-            return(amount + " deposited successfully.");
+            return("Transaction ID: " + transactionID + "\nTimestamp: " + formattedTimestamp + "\nAmount: " + amount +
+                    "\nTransaction Type: deposit" );
         }
         else {
-            return("Invalid amount.");
+            return("invalid amount for Deposit");
+
         }
     }
 //TO DO : make functions return strings instead of printing
     public String withdraw(double amount, Account account) {
         double currentBalance = account.getBalance();
-        if (amount <= 0)
-            return("Invalid amount.");
-        else if (amount <= currentBalance) {
+        if (amount <= 0) {
+            return("invalid amount for Withdraw");
+        }else if (amount <= currentBalance) {
             double newBalance = currentBalance - amount;
             account.setBalance(newBalance);
-            return(amount + " withdrawn successfully.");
+           return("Transaction ID: " + transactionID + "\nTimestamp: " + formattedTimestamp + "\nAmount: " + amount +
+                   "\nTransaction Type: withdraw");
         }
         else
-           return("Insufficient balance.");
+        {  return("insufficient balance");
+        }
     }
 
     //Function to transfer money between accounts
     public String transfer(double amount, Account sender, Account recipient) {
         double SenderCurrentBalance = sender.getBalance();
         if (amount <=0){
-            return("Invalid amount.");
+           return("invalid amount for Transfer");
         }
         else if (amount <= SenderCurrentBalance) {
             double newBalance = SenderCurrentBalance - amount;
             sender.setBalance(newBalance);
             recipient.setBalance(recipient.getBalance() + amount);
-            return(amount + " transferred successfully.");
+            return("Transaction ID: " + transactionID + "\nTimestamp: " + formattedTimestamp + "\nAmount: " + amount +
+                    "\nTransaction Type: transfer" + "\nSender: " + sender.getAccountHolderName() + "\nRecipient: " + recipient.getAccountHolderName());
         } else {
-            return("Insufficient balance.");
+            return("insufficient balance for transfer");
         }
     }
 

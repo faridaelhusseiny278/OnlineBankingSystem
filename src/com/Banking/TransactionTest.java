@@ -11,7 +11,7 @@ public class TransactionTest {
     String transactionID = "T123";
     Date date = new Date();
     double amount = 100.0;
-    String transactionType = "Credit";
+    String transactionType = "Transaction";
     String sender = "null";
     String recipient = "null";
     Transaction Transaction1 = new Transaction("T123", date, amount, transactionType, sender, recipient);
@@ -53,45 +53,24 @@ public class TransactionTest {
         Assert.assertEquals(amount, actualAmount, 0.001);
     }
 
-
-    //Test getTransactionDetails
-    @Test
-    public void testGetTransactionDetails() {
-
-
-        String actualTransactionDetails = Transaction1.getTransactionDetails();
-
-        Assert.assertEquals("Transaction ID: T123\nTimestamp: " + formattedTimestamp + "\nAmount: 100.0\nTransaction Type: Credit", actualTransactionDetails);
-    }
-
-    //Test getTransferDetails
-    @Test
-    public void testGetTransferDetails() {
-
-        String sender = "Ahmed";
-        String recipient = "Ali";
-        Transaction transaction = new Transaction("T123", date, amount, transactionType, sender, recipient);
-        String actualTransferDetails = transaction.getTransferDetails();
-
-        Assert.assertEquals("Sender: Ahmed\nRecipient: Ali\nAmount: 100.0\ncom.Banking.Transaction Type: Credit\nTimestamp: " + formattedTimestamp, actualTransferDetails);
-    }
 @Test
     public void testDepositSufficientBalance() {
         String Deposit;
         Deposit= Transaction1.deposit(amount, account);
         double actualBalance = account.getBalance();
         Assert.assertEquals(1100.0, actualBalance, 0.001);
-        Assert.assertEquals(Deposit , amount + " deposited successfully.");
+        Assert.assertEquals(Deposit , "Transaction ID: " + transactionID + "\nTimestamp: " + formattedTimestamp + "\nAmount: " + amount +
+                "\nTransaction Type: deposit");
     }
     @Test
     public void testDepositNegative() {
        String Deposit= Transaction1.deposit(-amount, account);
-        Assert.assertEquals(Deposit, "Invalid amount.");
+        Assert.assertEquals(Deposit, "invalid amount for Deposit");
     }
     @Test
     public void TestDepositZero(){
         String Deposit= Transaction1.deposit(0, account);
-        Assert.assertEquals(Deposit, "Invalid amount.");
+        Assert.assertEquals(Deposit, "invalid amount for Deposit");
     }
 
     @Test
@@ -99,25 +78,26 @@ public class TransactionTest {
         String Withdraw= Transaction1.withdraw(amount, account);
         double actualBalance = account.getBalance();
         Assert.assertEquals(900.0, actualBalance, 0.001);
-        Assert.assertEquals(Withdraw, amount + " withdrawn successfully.");
+        Assert.assertEquals(Withdraw, "Transaction ID: " + transactionID + "\nTimestamp: " + formattedTimestamp + "\nAmount: " + amount +
+                "\nTransaction Type: withdraw");
     }
 
     @Test
     public void TestWithdrawNegative(){
         String Withdraw= Transaction1.withdraw(-amount, account);
-        Assert.assertEquals(Withdraw, "Invalid amount.");
+        Assert.assertEquals(Withdraw,"invalid amount for Withdraw");
     }
 
     @Test
     public void TestWithdrawZero(){
         String Withdraw= Transaction1.withdraw(0, account);
-        Assert.assertEquals(Withdraw, "Invalid amount.");
+        Assert.assertEquals(Withdraw, "invalid amount for Withdraw");
     }
 
     @Test
     public void TestWithdrawInsufficient(){
         String Withdraw= Transaction1.withdraw(2000, account);
-        Assert.assertEquals(Withdraw, "Insufficient balance.");
+        Assert.assertEquals(Withdraw, "insufficient balance");
     }
     @Test
     public void TestTransfer(){
@@ -128,7 +108,8 @@ public class TransactionTest {
         double actualBalance2 = account2.getBalance();
         Assert.assertEquals(1900.0, actualBalance, 0.001);
         Assert.assertEquals(1100.0, actualBalance2, 0.001);
-        Assert.assertEquals(Transfer, amount + " transferred successfully.");
+        Assert.assertEquals(Transfer, "Transaction ID: " + transactionID + "\nTimestamp: " + formattedTimestamp + "\nAmount: " + amount +
+                "\nTransaction Type: transfer" + "\nSender: " + account1.getAccountHolderName() + "\nRecipient: " + account2.getAccountHolderName());
     }
     @Test
     public void TestTransferNegative(){
@@ -137,7 +118,7 @@ public class TransactionTest {
         String Transfer = Transaction1.transfer(-amount, account1, account2);
         double actualBalance = account1.getBalance();
         double actualBalance2 = account2.getBalance();
-        Assert.assertEquals(Transfer, "Invalid amount.");
+        Assert.assertEquals(Transfer, "invalid amount for Transfer");
         Assert.assertEquals(2000.0, actualBalance, 0.001);
         Assert.assertEquals(1000.0, actualBalance2, 0.001);
     }
@@ -148,7 +129,7 @@ public class TransactionTest {
         String Transfer = Transaction1.transfer(0, account1, account2);
         double actualBalance = account1.getBalance();
         double actualBalance2 = account2.getBalance();
-        Assert.assertEquals(Transfer, "Invalid amount.");
+        Assert.assertEquals(Transfer, "invalid amount for Transfer");
         Assert.assertEquals(2000.0, actualBalance, 0.001);
         Assert.assertEquals(1000.0, actualBalance2, 0.001);
 
@@ -161,7 +142,7 @@ public class TransactionTest {
         String Transfer = Transaction1.transfer(3000, account1, account2);
         double actualBalance = account1.getBalance();
         double actualBalance2 = account2.getBalance();
-        Assert.assertEquals(Transfer, "Insufficient balance.");
+        Assert.assertEquals(Transfer, "insufficient balance for transfer");
         Assert.assertEquals(2000.0, actualBalance, 0.001);
         Assert.assertEquals(1000.0, actualBalance2, 0.001);
     }
