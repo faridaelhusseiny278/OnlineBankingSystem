@@ -8,22 +8,34 @@ private String name;
 private String Email;
 private String Password;
 
-private int balance;
 
     static ArrayList<User> userList = new ArrayList<>();
 
 
-    public User(String name, String email, String password, int balance) {
+    public User(String name, String email, String password) {
         this.name = name;
         this.Email = email;
         this.Password = password;
-        this.balance = balance;
     }
 
-    public static void register(String name, String email, String password, int balance) {
-        User user = new User(name, email, password, balance);
-        userList.add(user);
-        System.out.println("User registered successfully.");
+    public static String register(String name, String email, String password) {
+        boolean flag = false;
+        for (User user : userList) {
+            if (user.getEmail().equals(email)) {
+                flag = true;
+                System.out.println("User already exist.");
+                return "User already exist.";
+            }
+        }
+        if(!flag)
+        {
+            User userl = new User(name, email, password);
+            userList.add(userl);
+            System.out.println("User registered successfully.");
+            return "User registered successfully.";
+        }
+
+        return "";
     }
 
     public static boolean login(String email, String password) {
@@ -64,9 +76,6 @@ private int balance;
         Password = password;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
 
     public String getName() {
         return name;
@@ -75,13 +84,8 @@ private int balance;
     public String getEmail() {
         return Email;
     }
-
     public String getPassword() {
         return Password;
-    }
-
-    public int getBalance() {
-        return balance;
     }
 
 

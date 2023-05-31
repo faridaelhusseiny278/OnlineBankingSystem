@@ -10,17 +10,17 @@
 
 <AnchorPane prefHeight="510.0" prefWidth="769.0" style="-fx-background-color: #060047;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoginFXML">
     <children>
-        <Button fx:id="Loginbutton" layoutX="398.0" layoutY="390.0" mnemonicParsing="false" onAction="#loginFunction" style="-fx-background-color: #e90064;" text="Login" textFill="#060047">
+        <Button fx:id="Loginbutton" layoutX="398.0" layoutY="390.0" mnemonicParsing="false" onAction="#loginFunction" prefHeight="23.0" prefWidth="129.0" style="-fx-background-color: #e90064;" text="Login" textFill="WHITE">
             <font>
                 <Font name="Bank Gothic Light BT" size="13.0" />
             </font>
         </Button>
-        <Button fx:id="returnButton" layoutX="250.0" layoutY="390.0" mnemonicParsing="false" onAction="#returnHome" style="-fx-background-color: #e90064;" text="Return to home" textFill="#060047">
+        <Button fx:id="returnButton" layoutX="250.0" layoutY="390.0" mnemonicParsing="false" onAction="#returnHome" style="-fx-background-color: #e90064;" text="Return to home" textFill="WHITE">
             <font>
                 <Font name="Bank Gothic Light BT" size="13.0" />
             </font>
         </Button>
-        <TextField fx:id="Email" layoutX="459.0" layoutY="167.0" promptText="Email" />
+        <TextField fx:id="Email" alignment="CENTER" layoutX="459.0" layoutY="167.0" promptText="Email" />
         <Text fill="#e90064" layoutX="210.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" textAlignment="CENTER">
             <font>
                 <Font name="Bank Gothic Light BT" size="18.0" />
@@ -36,10 +36,10 @@
                 <Font name="Bank Gothic Light BT" size="36.0" />
             </font>
         </Text>
-        <Label fx:id="warning" layoutX="264.0" layoutY="103.0" text="Label" textFill="WHITE">
+        <Label fx:id="warning" layoutX="212.0" layoutY="103.0" prefHeight="26.0" prefWidth="427.0" textFill="WHITE">
             <font>
-                <Font size="16.0" />
+                <Font name="Bank Gothic Light BT" size="16.0" />
             </font></Label>
-      <PasswordField fx:id="Password" layoutX="459.0" layoutY="242.0" promptText="Password" />
+      <PasswordField fx:id="Password" alignment="CENTER" layoutX="459.0" layoutY="242.0" promptText="Password" />
     </children>
 </AnchorPane>

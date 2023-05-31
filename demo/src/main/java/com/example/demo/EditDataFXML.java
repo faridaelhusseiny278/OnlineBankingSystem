@@ -36,21 +36,19 @@ public class EditDataFXML {
 
 
     @FXML
-    private void checkLogin() throws IOException
+    private void checkLogin() throws IOException {
 
+        if (OldMailTextBox.getText() != "" && OldPasswordTextBox.getText() != "" && Email.getText() != "" && Password.getText() != "") {
+            if (User.updateProfile(OldMailTextBox.getText().toString(), OldPasswordTextBox.getText().toString(), Email.getText().toString(), Password.getText().toString())) {
 
-    {
+                warning.setText("User updated successfully");
+            } else {
+                warning.setText("incorrect data, user didn't update");
 
-        HelloApplication h = new HelloApplication();
-        if(User.updateProfile(OldMailTextBox.getText().toString(),OldPasswordTextBox.getText().toString(), Email.getText().toString(),Password.getText().toString()))
-        {
-
-            warning.setText("User updated successfully");
+            }
         }
-        else
-        {
-            warning.setText("incorrect data, user didn't update");
-
+        else {
+            warning.setText("Please enter valid data");
         }
 
     }
@@ -59,9 +57,9 @@ public class EditDataFXML {
         Stage stage = (Stage) returnButton.getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("MainUserScreen_FXML.fxml"));
-        stage.setTitle("Poster HomeScreen");
+        stage.setTitle("Main user Screen");
         stage.setScene(new Scene(root));
-        stage.setWidth(700);
+        stage.setWidth(750);
         stage.setHeight(500);
         stage.setResizable(true);
         stage.show();

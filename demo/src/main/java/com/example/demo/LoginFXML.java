@@ -30,37 +30,30 @@ public class LoginFXML {
             private PasswordField Password;
 
 
-    private void userRegister() throws IOException {
-        loginFunction();
-    }
-
     @FXML
     private void loginFunction() throws IOException
     {
-        warning.setVisible(false);
-        if(User.login(Email.getText().toString(),Password.getText().toString())) {
-            warning.setVisible(true);
-            warning.setText("Login is successful");
-
-            lol();
+        if(Email.getText()!="" && Password.getText()!="") {
+            if (User.login(Email.getText().toString(), Password.getText().toString())) {
+                warning.setVisible(true);
+                warning.setText("Login is successful");
+                lol();
+            } else {
+                warning.setText("unsuccessful login, Invalid email or password");
+            }
         }
         else {
-            warning.setVisible(true);
-
-            warning.setText("unsuccessful login, Invalid email or password");
-
+            warning.setText("Please enter valid data");
         }
-
-
     }
     @FXML
     public void returnHome() throws IOException {
         Stage stage = (Stage) returnButton.getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("Hello-view.fxml"));
-        stage.setTitle("Poster HomeScreen");
+        stage.setTitle("Home Screen");
         stage.setScene(new Scene(root));
-        stage.setWidth(700);
+        stage.setWidth(750);
         stage.setHeight(500);
         stage.setResizable(true);
         stage.show();
@@ -70,9 +63,9 @@ public class LoginFXML {
         Stage stage = (Stage) Loginbutton.getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("MainUserScreen_FXML.fxml"));
-        stage.setTitle("Poster HomeScreen");
+        stage.setTitle("Main user Screen");
         stage.setScene(new Scene(root));
-        stage.setWidth(700);
+        stage.setWidth(750);
         stage.setHeight(500);
         stage.setResizable(true);
         stage.show();

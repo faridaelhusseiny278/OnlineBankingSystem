@@ -7,17 +7,17 @@
 
 <AnchorPane prefHeight="510.0" prefWidth="769.0" style="-fx-background-color: #060047;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloApplication">
    <children>
-      <Button fx:id="RegisterButton" layoutX="274.0" layoutY="292.0" mnemonicParsing="false" onAction="#registerFunction" prefHeight="54.0" prefWidth="203.0" style="-fx-background-color: #e90064;" text="Register" textFill="#060047">
+      <Button fx:id="RegisterButton" layoutX="283.0" layoutY="286.0" mnemonicParsing="false" onAction="#registerFunction" prefHeight="54.0" prefWidth="203.0" style="-fx-background-color: #e90064;" text="Register" textFill="WHITE">
          <font>
             <Font name="Bank Gothic Light BT" size="13.0" />
          </font>
       </Button>
-      <Text fill="#e90064" layoutX="101.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back" textAlignment="CENTER" wrappingWidth="566.3035278320312">
+      <Text fill="#e90064" layoutX="101.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back" textAlignment="CENTER" wrappingWidth="566.3035278320312">
          <font>
             <Font name="Bank Gothic Light BT" size="36.0" />
          </font>
       </Text>
-      <Button fx:id="LoginButton" layoutX="274.0" layoutY="159.0" mnemonicParsing="false" onAction="#loginFunction" prefHeight="54.0" prefWidth="203.0" style="-fx-background-color: #e90064;" text="Login" textFill="#060047">
+      <Button fx:id="LoginButton" layoutX="282.0" layoutY="158.0" mnemonicParsing="false" onAction="#loginFunction" prefHeight="54.0" prefWidth="203.0" style="-fx-background-color: #e90064;" text="Login" textFill="WHITE">
          <font>
             <Font name="Bank Gothic Light BT" size="13.0" />
          </font>

@@ -13,17 +13,16 @@ import java.io.IOException;
 
 public class MainUserScreen {
 @FXML
-
-private Button logoutbutton, editDataButton;
+private Button logoutbutton, editDataButton, setupAccountButton, transactionsButton;
 
     @FXML
     public void editData() throws IOException {
         Stage stage = (Stage) editDataButton.getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("editData_FXML.fxml"));
-        stage.setTitle("Poster HomeScreen");
+        stage.setTitle("Edit data Screen");
         stage.setScene(new Scene(root));
-        stage.setWidth(700);
+        stage.setWidth(750);
         stage.setHeight(500);
         stage.setResizable(true);
         stage.show();
@@ -33,9 +32,33 @@ private Button logoutbutton, editDataButton;
         Stage stage = (Stage) logoutbutton.getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("Hello-view.fxml"));
-        stage.setTitle("Poster HomeScreen");
+        stage.setTitle("Home Screen");
         stage.setScene(new Scene(root));
-        stage.setWidth(700);
+        stage.setWidth(750);
+        stage.setHeight(500);
+        stage.setResizable(true);
+        stage.show();
+    }
+    @FXML
+    public void setUpAccount() throws IOException {
+        Stage stage = (Stage) setupAccountButton.getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("SetAccountFXML.fxml"));
+        stage.setTitle("Set up account");
+        stage.setScene(new Scene(root));
+        stage.setWidth(750);
+        stage.setHeight(500);
+        stage.setResizable(true);
+        stage.show();
+    }
+    @FXML
+    public void transactionsScreen() throws IOException {
+        Stage stage = (Stage) transactionsButton.getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("Transctions_FXML.fxml"));
+        stage.setTitle("Transactions Screen");
+        stage.setScene(new Scene(root));
+        stage.setWidth(750);
         stage.setHeight(500);
         stage.setResizable(true);
         stage.show();

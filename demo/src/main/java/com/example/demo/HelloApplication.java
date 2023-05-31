@@ -3,15 +3,17 @@ package com.example.demo;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class HelloApplication extends Application {
-
     private Stage stg;
     @FXML
     private Button RegisterButton, LoginButton;
@@ -20,9 +22,9 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage;
             Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        primaryStage.setTitle("Job Finder Application");
+        primaryStage.setTitle("Online Banking Application");
         primaryStage.setScene(new Scene(root));
-        primaryStage.setWidth(700);
+        primaryStage.setWidth(750);
         primaryStage.setHeight(500);
         primaryStage.show();
 
@@ -32,9 +34,9 @@ public class HelloApplication extends Application {
         Stage stage = (Stage) RegisterButton.getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("Register_FXML.fxml"));
-        stage.setTitle("Poster HomeScreen");
+        stage.setTitle("Register Screen");
         stage.setScene(new Scene(root));
-        stage.setWidth(700);
+        stage.setWidth(750);
         stage.setHeight(500);
         stage.setResizable(true);
         stage.show();
@@ -44,20 +46,14 @@ public class HelloApplication extends Application {
         Stage stage = (Stage) LoginButton.getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("Login_FXML.fxml"));
-        stage.setTitle("Poster HomeScreen");
+        stage.setTitle("Login Screen");
         stage.setScene(new Scene(root));
-        stage.setWidth(700);
+        stage.setWidth(750);
         stage.setHeight(500);
         stage.setResizable(true);
         stage.show();
     }
 
-
-    public void changeScene(String fxml) throws IOException
-        {
-         Parent pane = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
-         stg.getScene().setRoot(pane);
-        }
 
     public static void main(String[] args) {
         launch();
